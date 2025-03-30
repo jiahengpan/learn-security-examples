@@ -32,3 +32,25 @@ This example demonstrates spoofind through two ways -- Stealing cookies programm
 1. Briefly explain the spoofing vulnerability in **insecure.ts**.
 2. Briefly explain different ways in which vulnerability can be exploited.
 3. Briefly explain why **secure.ts** does not have the spoofing vulnerability in **insecure.ts**.
+
+
+
+1. Spoofing vulnerability in insecure.ts:  
+- The session cookie is not secure (no secure flag), allowing interception.  
+- No proper admin authentication - just checks if username is "Admin".  
+- Session data can be easily manipulated.  
+
+2. Exploitation methods:  
+- Cookie theft via MITM (no secure/HttpOnly flags)  
+- Registering as "Admin" through normal form  
+- Direct cookie manipulation in browser  
+- CSRF attacks (no protection tokens)  
+
+3. Why secure.ts is safe:  
+- Uses secure cookie settings (secure, HttpOnly flags)  
+- Proper admin authentication (password check)  
+- CSRF protection tokens  
+- Separate admin flag (not just username check)  
+- Validates session integrity server-side  
+
+Main difference: secure.ts makes it impossible to just change username or cookie to gain admin access.
